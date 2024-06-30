@@ -1,1 +1,32 @@
-<p>employees works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Office</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of data">
+      <td>{{ employee.employeeId }}</td>
+      <td>{{ employee.first_name }}</td>
+      <td>{{ employee.last_name }}</td>
+      <td>{{ employee.office.name }}</td>
+      <!-- TODO make link to office page -->
+      <td>
+        <button class="btn btn-primary">Edit</button>
+        <!-- TODO Wire up to edit page-->
+        <button class="btn btn-danger">Delete</button>
+        <!-- TODO wire up to delete method add warning pop up -->
+        <!-- <button class="btn btn-primary" (click)="editEmployee(employee)">
+                    Edit
+                  </button>
+                  <button class="btn btn-danger" (click)="deleteEmployee(employee)">
+                    Delete
+                  </button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
