@@ -1,1 +1,20 @@
-<p>offices works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let office of data">
+      <td>{{ office.officeId }}</td>
+      <td>{{ office.name }}</td>
+      <td>{{ office.location }}</td>
+      <td>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
