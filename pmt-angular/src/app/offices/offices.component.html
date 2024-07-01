@@ -25,10 +25,21 @@
   </table>
 </div>
 
-<input
-  type="text"
-  [(ngModel)]="newOfficeName"
-  name="officeName"
-  placeholder="Enter office name"
-/>
-<button (click)="addOffice()">Add Office</button>
+<!-- Add New Office form -->
+<!-- TODO FUTURE ADD: move this to its own component where more info can be taken in. -->
+<div>
+  <form>
+    <mat-form-field>
+      <mat-label>New Office Name</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="newOfficeName"
+        name="officeName"
+        placeholder="Enter office name"
+        value=""
+      />
+    </mat-form-field>
+    <button mat-flat-button (click)="addOffice()">Add Office</button>
+  </form>
+</div>

@@ -3,8 +3,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
@@ -17,6 +18,8 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatIconModule,
     MatTableModule,
+    MatInputModule,
+    MatFormFieldModule,
   ],
   templateUrl: './offices.component.html',
   styleUrl: './offices.component.css',
