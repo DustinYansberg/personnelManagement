@@ -5,3 +5,8 @@ div {
     align-items: center;
     margin: 0 auto;
 }
+
+.clickableRow:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}

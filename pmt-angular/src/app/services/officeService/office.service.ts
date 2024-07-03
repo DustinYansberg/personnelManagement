@@ -18,10 +18,14 @@ export class OfficeService {
   // get one
 
   // create one
-  addOffice(name: string, capacity: number): Observable<HttpResponse<any>> {
+  addOffice(
+    name: string,
+    capacity: number,
+    employees: any
+  ): Observable<HttpResponse<any>> {
     return this.http.post(
       this.url,
-      { name: name, max_capacity: capacity },
+      { name: name, capacity: capacity, employees: employees },
       { observe: 'response' }
     );
   }

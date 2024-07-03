@@ -44,23 +44,28 @@ export class OfficesComponent {
       console.log(response.body);
 
       for (const o of response.body) {
-        console.log(o);
         this.officeList.push(
           new Office(o.officeId, o.name, o.capacity, o.employees)
         );
       }
     });
   }
+
+  // form variables, linked to html with [(ngmodel)]
   newName: string = '';
-  // TODO Figure out if its Java, SQL, or Angular that is giving me the wrong value for capacity when I create a new office
   newCapacity: number = 10;
+  newEmployees: any = [];
 
   addOffice() {
     this.service
-      .addOffice(this.newName, this.newCapacity)
+      .addOffice(this.newName, this.newCapacity, this.newEmployees)
       .subscribe((response) => {
         this.getAllOffices();
       });
+
+    this.newCapacity = 10;
+    this.newEmployees = [];
+    this.newName = '';
   }
 
   deleteOffice(id: number) {
@@ -71,5 +76,6 @@ export class OfficesComponent {
 
   editOffice(office: any) {
     // Update the office in the data source
+    console.log('ID:', office.id, office.name, 'clicked!');
   }
 }
