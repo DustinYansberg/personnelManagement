@@ -1,24 +1,33 @@
 <!-- Office Table -->
 <div class="table">
   <table mat-table [dataSource]="officeList" class="mat-elevation-z8">
+    <!--  -->
     <ngContainer matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
       <td mat-cell *matCellDef="let office">{{ office.id }}</td>
     </ngContainer>
+
+    <!--* Name  -->
     <ngContainer matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let office">{{ office.name }}</td>
     </ngContainer>
+
+    <!--* Count of Employees -->
     <ngContainer matColumnDef="numOfEmployees">
       <th mat-header-cell *matHeaderCellDef>No. of Employees</th>
       <td mat-cell *matCellDef="let office">
         {{ office.employees.length }}
       </td>
     </ngContainer>
+
+    <!--* Capacity -->
     <ngContainer matColumnDef="capacity">
       <th mat-header-cell *matHeaderCellDef>Capacity</th>
       <td mat-cell *matCellDef="let office">{{ office.capacity }}</td>
     </ngContainer>
+
+    <!--* Actions -->
     <ngContainer matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let office">
@@ -30,10 +39,10 @@
         </button>
       </td>
     </ngContainer>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
-      (click)="editOffice(row)"
       class="clickableRow"
       *matRowDef="let row; columns: displayedColumns"
     ></tr>

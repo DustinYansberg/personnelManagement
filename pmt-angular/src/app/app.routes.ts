@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { OfficesComponent } from './offices/offices-table/offices.component';
-import { EmployeesComponent } from './employees/employees.component';
+import { EmployeesComponent } from './employees/employees-table/employees.component';
 import { OfficeDetailsComponent } from './offices/office-details/office-details.component';
+import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'office/:id',
     component: OfficeDetailsComponent,
+  },
+  {
+    path: 'employee/:id',
+    component: EmployeeDetailsComponent,
   },
 ];
 
