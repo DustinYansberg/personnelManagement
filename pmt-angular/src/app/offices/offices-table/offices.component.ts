@@ -6,8 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { Office } from '../models/office';
-import { OfficeService } from '../services/officeService/office.service';
+import { Office } from '../../models/office';
+import { OfficeService } from '../../services/officeService/office.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-offices',
@@ -34,7 +35,7 @@ export class OfficesComponent {
     'actions',
   ];
 
-  constructor(private service: OfficeService) {
+  constructor(private service: OfficeService, private router: Router) {
     this.getAllOffices();
   }
 
@@ -76,6 +77,7 @@ export class OfficesComponent {
 
   editOffice(office: any) {
     // Update the office in the data source
+    this.router.navigate(['office/' + office.id]);
     console.log('ID:', office.id, office.name, 'clicked!');
   }
 }

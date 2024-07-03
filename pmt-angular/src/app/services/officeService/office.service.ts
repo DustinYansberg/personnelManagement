@@ -16,6 +16,9 @@ export class OfficeService {
   }
 
   // get one
+  getOffice(id: number): Observable<HttpResponse<any>> {
+    return this.http.get(this.url + '/' + id, { observe: 'response' });
+  }
 
   // create one
   addOffice(
