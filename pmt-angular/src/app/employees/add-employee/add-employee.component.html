@@ -1,1 +1,85 @@
-<p>add-employee works!</p>
+<div class="stepper-container">
+  <mat-stepper [linear]="true" #stepper class="stepper">
+    <!--* Step 1: First and Last Name -->
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>What is the Employee's name?</ng-template>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="First name"
+            formControlName="firstCtrl"
+            name="firstName"
+            id="firstName"
+            [(ngModel)]="employee.firstName"
+            required
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            placeholder="Last name"
+            formControlName="firstCtrl"
+            name="lastName"
+            id="lastName"
+            [(ngModel)]="employee.lastName"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!--* Step 2: Office -->
+    <mat-step [stepControl]="secondFormGroup" label="Choose an Office">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Office</mat-label>
+          <mat-select
+            formControlName="secondCtrl"
+            [(ngModel)]="employee.office"
+            required
+          >
+            <mat-option *ngFor="let office of offices" [value]="office">
+              {{ office.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!--* Finish and Submit -->
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <mat-card class="detail-card">
+        <mat-card-header>
+          <mat-card-title> Confirm Employee Details </mat-card-title>
+        </mat-card-header>
+        <mat-divider class="divider"></mat-divider>
+        <mat-card-content>
+          <span class="mat-label-medium"> Employee Name: </span>
+          {{ employee.firstName }} {{ employee.lastName }}
+        </mat-card-content>
+        <mat-card-content>
+          <span class="mat-label-medium"> Place Of Work: </span>
+          {{ getOfficeName() }}
+        </mat-card-content>
+      </mat-card>
+
+      <p>Please select the save Icon if the above information is correct.</p>
+      <div>
+        <button mat-button matStepperPrevious>back</button>
+        <button mat-button (click)="saveEmployee()">Save</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
