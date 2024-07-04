@@ -3,7 +3,7 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 2em auto 2em auto;
 }
 
 .clickableRow:hover {

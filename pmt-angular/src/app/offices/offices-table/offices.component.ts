@@ -27,13 +27,7 @@ import { Router } from '@angular/router';
 })
 export class OfficesComponent {
   officeList: Office[] = [];
-  displayedColumns: string[] = [
-    'id',
-    'name',
-    'numOfEmployees',
-    'capacity',
-    'actions',
-  ];
+  displayedColumns: string[] = ['id', 'name', 'numOfEmployees', 'capacity'];
 
   constructor(private service: OfficeService, private router: Router) {
     this.getAllOffices();
@@ -42,8 +36,6 @@ export class OfficesComponent {
   getAllOffices() {
     this.service.getAllOffices().subscribe((response: any) => {
       this.officeList = [];
-      console.log(response.body);
-
       for (const o of response.body) {
         this.officeList.push(
           new Office(o.officeId, o.name, o.capacity, o.employees)
@@ -75,9 +67,11 @@ export class OfficesComponent {
     });
   }
 
-  gotToOfficeDetailsPage(office: Office) {
-    // Update the office in the data source
-    this.router.navigate(['office/' + office.id]);
-    console.log('ID:', office.id, office.name, 'clicked!');
+  gotToOfficeDetailsPage(office: Object) {
+    this.router.navigate(['office/' + (office as Office).id]);
+  }
+
+  goToAddOfficePage() {
+    this.router.navigate(['/addOffice']);
   }
 }

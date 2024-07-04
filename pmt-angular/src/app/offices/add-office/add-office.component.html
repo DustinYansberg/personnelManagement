@@ -1,0 +1,74 @@
+<div class="stepper-container">
+  <mat-stepper [linear]="true" #stepper class="stepper">
+    <!--* Step 1: First and Last Name -->
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>What is the Employee's name?</ng-template>
+        <mat-form-field>
+          <mat-label>Office Name</mat-label>
+          <input
+            matInput
+            placeholder="Office Name"
+            formControlName="firstCtrl"
+            name="firstName"
+            id="firstName"
+            [(ngModel)]="office.name"
+            required
+          />
+        </mat-form-field>
+        <br />
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!--* Step 2: Capacity -->
+    <mat-step [stepControl]="secondFormGroup" label="Choose an Office">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Office Capacity</mat-label>
+          <input
+            matInput
+            placeholder="Office Capacity"
+            formControlName="secondCtrl"
+            name="capacity"
+            id="capacity"
+            type="number"
+            [(ngModel)]="office.capacity"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!--* Finish and Submit -->
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <mat-card class="detail-card">
+        <mat-card-header>
+          <mat-card-title> Confirm Office Details </mat-card-title>
+        </mat-card-header>
+        <mat-divider class="divider"></mat-divider>
+        <mat-card-content>
+          <span class="mat-label-medium"> Employee Name: </span>
+          {{ office.name }}
+        </mat-card-content>
+        <mat-card-content>
+          <span class="mat-label-medium"> Capacity: </span>
+          {{ office.capacity }}
+        </mat-card-content>
+      </mat-card>
+
+      <p>Please select "save" if the above information is correct.</p>
+      <div>
+        <button mat-button matStepperPrevious>back</button>
+        <button mat-button (click)="saveOffice()">save</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

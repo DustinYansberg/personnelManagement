@@ -1,0 +1,13 @@
+.stepper-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+    margin: 0 25%;
+}
+
+.stepper {
+    background-color: white;
+    outline: black solid 1px;
+    border-radius: 10px;
+    width: 100%;
+}
