@@ -39,9 +39,9 @@ export class EmployeeDetailsComponent {
   }
 }
 
+// TODO: Implement Add Employee Functionality
 // TODO: Implement Delete Employee Functionality
 // TODO: Implement Update Employee Functionality
-// TODO: Implement Add Employee Functionality
 
 // TODO: Add a add Employee Page and an Add Office Page
 

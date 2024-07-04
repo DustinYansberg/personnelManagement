@@ -36,4 +36,8 @@ export class EmployeesComponent {
   goToEmployeeDetailsPage(employee: Employee) {
     this.router.navigate(['/employee', employee.id]);
   }
+
+  goToAddEmployeePage() {
+    this.router.navigate(['/addEmployee']);
+  }
 }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Employee } from '../../models/employee';
 
 @Injectable({
   providedIn: 'root',
@@ -21,14 +22,15 @@ export class EmployeeService {
   }
 
   // create one
-  addEmployee(
-    name: string,
-    capacity: number,
-    employees: any
-  ): Observable<HttpResponse<any>> {
+  addEmployee(employee: Employee): Observable<HttpResponse<any>> {
     return this.http.post(
       this.url,
-      { name: name, capacity: capacity, employees: employees },
+      {
+        employeeId: employee.id,
+        first_name: employee.firstName,
+        last_name: employee.lastName,
+        office: employee.office,
+      },
       { observe: 'response' }
     );
   }
