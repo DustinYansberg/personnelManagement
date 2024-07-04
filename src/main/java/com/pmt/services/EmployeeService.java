@@ -27,7 +27,29 @@ public class EmployeeService {
 	return ResponseEntity.status(HttpStatus.OK).body(repo.findById(id).get());
     }
 
-    public Employee createEmployee(Employee employee) {
-	return repo.save(employee);
+    public ResponseEntity<Employee> createEmployee(Employee employee) {
+	if (repo.existsById(employee.getEmployeeId())) {
+	    return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Error", "This Employee ID doesn't exist")
+		    .body(employee);
+	}
+	System.out.println(employee.toString());
+	return ResponseEntity.status(HttpStatus.OK).body(repo.save(employee));
+    }
+
+    public ResponseEntity<Employee> updateEmployee(int id, Employee employee) {
+	if (!repo.existsById(id)) {
+	    return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Error", "This Employee ID doesn't exist")
+		    .body(employee);
+	}
+	return ResponseEntity.status(HttpStatus.OK).body(repo.save(employee));
+    }
+
+    public ResponseEntity<Employee> deleteEmployee(int id) {
+	if (!repo.existsById(id)) {
+	    return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Error", "This Employee ID doesn't exist")
+		    .body(null);
+	}
+	repo.deleteById(id);
+	return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }

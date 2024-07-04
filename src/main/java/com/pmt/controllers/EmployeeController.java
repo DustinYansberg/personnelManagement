@@ -35,12 +35,18 @@ public class EmployeeController {
 
     // create
     @PostMapping
-    public Employee createEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
 	return service.createEmployee(employee);
     }
 
     // update by id
+    public ResponseEntity<Employee> updateById(int id, Employee employee) {
+	return service.updateEmployee(id, employee);
+    }
 
     // delete by id
+    public ResponseEntity<Employee> deleteById(int id) {
+	return service.deleteEmployee(id);
+    }
 
 }

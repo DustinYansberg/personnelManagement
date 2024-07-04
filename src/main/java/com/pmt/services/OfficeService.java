@@ -15,8 +15,8 @@ public class OfficeService {
     private OfficeRepository repo;
 
     // get all
-    public Iterable<Office> getAllOffices() {
-	return repo.findAll();
+    public ResponseEntity<Iterable<Office>> getAllOffices() {
+	return ResponseEntity.status(HttpStatus.OK).body(repo.findAll());
     }
 
     // get by id
@@ -25,7 +25,6 @@ public class OfficeService {
 	    // return response entity with error message and null body
 	    return ResponseEntity.status(HttpStatus.NOT_FOUND)
 		    .header("Error", "This is a dream. Wake up before it finds you.").body(null);
-
 	}
 
 	// return response entity with success code and office as body
@@ -33,12 +32,36 @@ public class OfficeService {
     }
 
     // create
-    public Office createOffice(Office office) {
-	return repo.save(office);
+    public ResponseEntity<Office> createOffice(Office office) {
+	if (repo.existsById(office.getOfficeId())) {
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+		    .header("error", "A Department with this ID already exists.").body(office);
+	}
+
+	return ResponseEntity.status(HttpStatus.OK).body(repo.save(office));
     }
 
     // update by id
+    public ResponseEntity<Office> updateOfficeById(int id, Office office) {
+	if (!repo.existsById(id)) {
+	    // return response entity with error message and null body
+	    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+		    .header("Error", "This is a dream. Wake up before it finds you.").body(null);
+	}
+	return ResponseEntity.status(HttpStatus.OK).body(repo.save(office));
+    }
 
     // delete by id
-
+    public ResponseEntity<Office> deleteOfficeById(int id) {
+	if (!repo.existsById(id)) {
+	    // return response entity with error message and null body
+	    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+		    .header("Error", "This is a dream. Wake up before it finds you.").body(null);
+	}
+	// actually delete it
+	repo.deleteById(id);
+	// return an HTTP Response
+	return ResponseEntity.status(HttpStatus.OK)
+		.header("Success", "Wow. I didn't think you had it in you. Well done").body(null);
+    }
 }

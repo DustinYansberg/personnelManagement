@@ -16,63 +16,70 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "office")
 public class Office {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "office_id")
-	private int officeId;
-	
-	@Column(name = "office_name")
-	private String name;
-	
-	@OneToMany(mappedBy = "office", fetch = FetchType.EAGER)
-	@JsonIgnoreProperties("office")
-	private List<Employee> employees;
-	
-	
-	public Office() {
-		super();
-	}
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "office_id")
+    private int officeId;
 
-	public Office(int officeId, String name, List<Employee> employees) {
-		super();
-		this.officeId = officeId;
-		this.name = name;
-		this.employees = employees;
-	}
+    @Column(name = "office_name")
+    private String name;
 
+    @Column(name = "max_capacity")
+    private int capacity;
 
-	public int getOfficeId() {
-		return officeId;
-	}
+    @OneToMany(mappedBy = "office", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("office")
+    private List<Employee> employees;
 
+    public Office() {
+	super();
+    }
 
-	public void setOfficeId(int officeId) {
-		this.officeId = officeId;
-	}
+    public Office(int officeId, String name, int capacity, List<Employee> employees) {
+	super();
+	this.officeId = officeId;
+	this.name = name;
+	this.capacity = capacity;
+	this.employees = employees;
+    }
 
+    public int getOfficeId() {
+	return officeId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setOfficeId(int officeId) {
+	this.officeId = officeId;
+    }
 
+    public String getName() {
+	return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+	this.name = name;
+    }
 
+    public int getCapacity() {
+	return capacity;
+    }
 
-	public List<Employee> getEmployees() {
-		return employees;
-	}
+    public void setCapacity(int capacity) {
+	this.capacity = capacity;
+    }
 
+    public List<Employee> getEmployees() {
+	return employees;
+    }
 
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
-	
-	
-	
-	
+    public void setEmployees(List<Employee> employees) {
+	this.employees = employees;
+    }
+
+    @Override
+    public String toString() {
+	return "Office [officeId=" + officeId + ", name=" + name + ", capacity=" + capacity + ", employees=" + employees
+		+ "]";
+    }
+
 }
