@@ -41,6 +41,23 @@ export class EmployeeService {
   }
 
   // update one
+  update(employee: Employee): Observable<HttpResponse<any>> {
+    return this.http.put(
+      this.url + '/' + employee.id,
+      {
+        employeeId: employee.id,
+        first_name: employee.firstName,
+        last_name: employee.lastName,
+        office: {
+          officeId: (employee.office as Office).id,
+          name: (employee.office as Office).name,
+          capacity: (employee.office as Office).capacity,
+          employees: [],
+        },
+      },
+      { observe: 'response' }
+    );
+  }
 
   // delete one
   delete(id: number): Observable<HttpResponse<any>> {

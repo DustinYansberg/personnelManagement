@@ -1,6 +1,7 @@
 import { HttpResponse, HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Office } from '../../models/office';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,18 @@ export class OfficeService {
   }
 
   // update one
+  updateOffice(office: Office): Observable<HttpResponse<any>> {
+    return this.http.put(
+      this.url + '/' + office.id,
+      {
+        officeId: office.id,
+        name: office.name,
+        capacity: office.capacity,
+        employees: [],
+      },
+      { observe: 'response' }
+    );
+  }
 
   // delete one
   delete(id: number): Observable<HttpResponse<any>> {
