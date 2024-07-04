@@ -41,6 +41,7 @@ public class EmployeeService {
 	    return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Error", "This Employee ID doesn't exist")
 		    .body(employee);
 	}
+	System.out.println(employee.toString());
 	return ResponseEntity.status(HttpStatus.OK).body(repo.save(employee));
     }
 
