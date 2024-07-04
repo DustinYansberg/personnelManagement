@@ -7,11 +7,54 @@
 
     <mat-card-content> Employee Number: {{ employee.id }} </mat-card-content>
     <mat-card-content>
-      Employee Name:{{ employee.firstName }} {{ employee.lastName }}
+      @if(isDisabled){ Employee Name: {{ employee.firstName }}
+      {{ employee.lastName }}} @else {
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          [(ngModel)]="employee.firstName"
+          placeholder="First Name"
+          disabled="{{ isDisabled }}"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          [(ngModel)]="employee.lastName"
+          placeholder="Last Name"
+          disabled="{{ isDisabled }}"
+        />
+      </mat-form-field>
+      }
     </mat-card-content>
-    <mat-card-content> Place Of Work: {{ office.name }} </mat-card-content>
+    <mat-card-content>
+      @if(isDisabled){ Place of Work: {{ office.name }}
+      } @else{
+      <mat-form-field>
+        <mat-label>Office</mat-label>
+        <mat-select [(ngModel)]="employee.office">
+          <mat-option *ngFor="let office of offices" [value]="office">
+            @if(office.capacity > office.employees.length){
+            {{ office.name }}
+            } @else{
+            {{ office.name }} (Full) }
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      @if(showError){
+      <mat-error>Office is full, Please Select Another Office</mat-error>
+      } }
+    </mat-card-content>
+
     <mat-card-actions>
-      <button mat-button color="primary" class="edit-button">
+      <button
+        mat-button
+        (click)="makeEditable()"
+        color="primary"
+        class="edit-button"
+      >
         <mat-icon>edit</mat-icon>
       </button>
       <button
@@ -22,6 +65,16 @@
       >
         <mat-icon> delete </mat-icon>
       </button>
+      @if(!isDisabled){
+      <button
+        mat-button
+        (click)="saveChanges()"
+        color="primary"
+        class="save-button"
+      >
+        <mat-icon>save</mat-icon>
+      </button>
+      }
     </mat-card-actions>
   </mat-card>
 </div>
