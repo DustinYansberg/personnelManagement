@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employeeServices/employee.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,7 +18,11 @@ import { MatDividerModule } from '@angular/material/divider';
 export class EmployeeDetailsComponent {
   employee: Employee;
   office: Office = new Office(0, 'default', 0, []);
-  constructor(private service: EmployeeService, private route: ActivatedRoute) {
+  constructor(
+    private service: EmployeeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.employee = this.getEmployee(this.route.snapshot.params['id']);
   }
 
@@ -37,16 +41,23 @@ export class EmployeeDetailsComponent {
 
     return e;
   }
+
+  deleteEmployee() {
+    console.log(this.employee.id);
+    this.service.delete(this.employee.id).subscribe((res) => {
+      this.router.navigate(['/employees']);
+    });
+  }
 }
 
-// TODO: Implement Add Employee Functionality
-// TODO: Implement Delete Employee Functionality
-// TODO: Implement Update Employee Functionality
+//// Implement Add Employee Functionality
+//// Add a add Employee Page and an Add Office Page
+//// Implement Delete Employee Functionality
+//// TODO: Implement Update Employee Functionality
+//// TODO: Implement Update Office Functionality
 
-// TODO: Add a add Employee Page and an Add Office Page
+//// TODO Make the employee and office detail page editable when the edit button is pressed. alternatively, make a separate edit page for each.
 
-// TODO Make the employee and office detail page editable when the edit button is pressed. alternatively, make a separate edit page for each.
-
-// TODO: Add Sort header functionality to tables (available in angular material table)
-// TODO: Paginate the lists of employees and offices
-// TODO: Add a search bar to the employees and offices pages
+//// TODO: Add Sort header functionality to tables (available in angular material table)
+//// TODO: Paginate the lists of employees and offices
+//// TODO: Add a search bar to the employees and offices pages

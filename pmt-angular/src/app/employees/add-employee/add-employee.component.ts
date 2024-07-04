@@ -80,7 +80,8 @@ export class AddEmployeeComponent {
 
   saveEmployee() {
     console.log(this.employee);
-    this.employeeService.addEmployee(this.employee).subscribe();
-    this.router.navigate(['/employees']);
+    this.employeeService.addEmployee(this.employee).subscribe((res) => {
+      this.router.navigate(['/employees']);
+    });
   }
 }

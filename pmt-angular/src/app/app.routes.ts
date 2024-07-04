@@ -5,6 +5,7 @@ import { EmployeesComponent } from './employees/employees-table/employees.compon
 import { OfficeDetailsComponent } from './offices/office-details/office-details.component';
 import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
 import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
+import { AddOfficeComponent } from './offices/add-office/add-office.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'addEmployee',
     component: AddEmployeeComponent,
+  },
+  {
+    path: 'addOffice',
+    component: AddOfficeComponent,
   },
 ];
 
