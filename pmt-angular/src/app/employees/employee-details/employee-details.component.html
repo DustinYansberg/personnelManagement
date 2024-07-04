@@ -1,1 +1,23 @@
-<p>employee-details works!</p>
+<div>
+  <mat-card class="detail-card">
+    <mat-card-header>
+      <mat-card-title> Employee Details </mat-card-title>
+    </mat-card-header>
+    <mat-divider class="divider"></mat-divider>
+
+    <mat-card-content> Employee Number: {{ employee.id }} </mat-card-content>
+    <mat-card-content>
+      Employee Name:{{ employee.firstName }} {{ employee.lastName }}
+    </mat-card-content>
+    <mat-card-content> Place Of Work: {{ office.name }} </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" class="edit-button">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-button color="warn" class="delete-button">
+        <mat-icon> delete </mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div></div>

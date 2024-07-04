@@ -75,7 +75,7 @@ export class OfficesComponent {
     });
   }
 
-  editOffice(office: any) {
+  gotToOfficeDetailsPage(office: Office) {
     // Update the office in the data source
     this.router.navigate(['office/' + office.id]);
     console.log('ID:', office.id, office.name, 'clicked!');

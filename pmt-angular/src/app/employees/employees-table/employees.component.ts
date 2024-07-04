@@ -15,19 +15,16 @@ import { Router } from '@angular/router';
   styleUrl: './employees.component.css',
 })
 export class EmployeesComponent {
-  employees: any = [];
-  displayedColumns: string[] = [
-    'id',
-    'firstName',
-    'lastName',
-    'office',
-    'actions',
-  ];
+  employees: Employee[] = [];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'office'];
 
   constructor(private service: EmployeeService, private router: Router) {
-    this.service.getAllEmployees().subscribe((response) => {
-      console.log(response.body);
+    this.getAllEmployees();
+  }
 
+  getAllEmployees() {
+    this.service.getAllEmployees().subscribe((response) => {
+      this.employees = [];
       for (const e of response.body) {
         this.employees.push(
           new Employee(e.employeeId, e.first_name, e.last_name, e.office)
@@ -36,5 +33,7 @@ export class EmployeesComponent {
     });
   }
 
-  editEmployee(employee: Employee) {}
+  goToEmployeeDetailsPage(employee: Employee) {
+    this.router.navigate(['/employee', employee.id]);
+  }
 }
