@@ -32,13 +32,14 @@ This project was made in a short timeline to practice my newly aquired Angular a
 
 The tables are populated with their respective models, and each row can be selected to view more details about the model.
 
-![EmployeeAndOfficeTables](https://github.com/DustinYansberg/personnelManagement/assets/88344280/f9bdb6e0-4c38-4108-b444-2c88155ac5c1)
+![EmployeeAndOfficeTables](https://github.com/DustinYansberg/personnelManagement/assets/88344280/03845965-eb5d-4033-bd2f-d822a0976142)
+
 
 ## Add Employee Or Host
 
 The stepper workflow makes adding a new employee or a new office a breeze.
 
-![AddEmployee](https://github.com/DustinYansberg/personnelManagement/assets/88344280/ba78c8fa-5609-4a46-bfd9-0329f7cab064)
+![AddEmployee](https://github.com/DustinYansberg/personnelManagement/assets/88344280/ebebf2ca-5242-42d5-8f48-7f28fb833123)
 
 ### Safety checks for when an office is at capacity
 
@@ -46,8 +47,7 @@ The application will prevent a user from adding an employee to an office if the 
 
 In the following videos, The office named "Low Cap" is marked as (full) and we will not be able to add an employee to it.
 
-![CantAddEmployeeIfFull](https://github.com/DustinYansberg/personnelManagement/assets/88344280/f7ef99f1-c506-4fea-879d-82324e52e842)
-
+![CantAddEmployeeIfFull](https://github.com/DustinYansberg/personnelManagement/assets/88344280/4ca1ad83-a4d2-4253-9601-1e4c46424bec)
 
 ## Editing An Employee or Office Directly From their details page 
 
