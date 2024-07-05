@@ -42,7 +42,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` (`employee_id`, `employee_first_name`, `employee_last_name`, `office_id`) VALUES (1,'Michael','McTesterson',4),(10,'John','Wilkers',12),(16,'Tom','Green',3),(19,'Jon','Provan',4),(20,'Test','Name',3);
+INSERT INTO `employee` (`employee_id`, `employee_first_name`, `employee_last_name`, `office_id`) VALUES (1,'Michael','McTesterson',4),(10,'John','Wilkers',12),(16,'Tom','Green',3),(19,'Sara','Gardens',4),(20,'Test','Name',3);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
