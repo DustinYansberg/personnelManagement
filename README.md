@@ -59,12 +59,12 @@ Employees and offices can be edited directly from their details page with the cl
 Before you begin, you need to be able to install and run Spring Boot packages. This will require java.
 
 - Clone The Repo
-- Use the SQL file to build the database
-- Open the Java project in your preferred IDE and install the packages
-- be sure to create your own apllication.properties file
-- In your command line, navigate to pmt-angular and run `npm install` to install the required angular packages.
-- with everything installed sucessfully, run the Java springboot backend
-- now in the command line from the pmt-angular folder, run `ng serve` to run the front end server
+- Use the SQL file found in the SQL folder to build the database. This step will require knowledge of MySQL and MySQL Workbench
+- Open the root folder of the repo as a Java project in your preferred IDE and install the packages
+- be sure to create your own apllication.properties file and to update the project with the pom.xml
+- with SQL and the spring boot app installed sucessfully, run the Java springboot backend
+- In your command line, navigate to personnel-management-tool/pmt-angular and run `npm install` to install the required angular packages.
+- After npm install completes, run `ng serve` to run the front end server
 - in a browser of your choice, navigate to localhost:4200
   
 and Voila! have fun!
