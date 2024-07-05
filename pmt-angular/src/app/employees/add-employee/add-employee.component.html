@@ -46,7 +46,10 @@
             required
           >
             <mat-option *ngFor="let office of offices" [value]="office">
+              @if(office.capacity > office.employees.length){
               {{ office.name }}
+              } @else{
+              {{ office.name }} (Full) }
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -76,8 +79,13 @@
       </mat-card>
 
       <p>Please select the save Icon if the above information is correct.</p>
+      @if(showError){
+      <mat-error>Office is full, Please Select Another Office</mat-error>
+      }
       <div>
-        <button mat-button matStepperPrevious>back</button>
+        <button mat-button (click)="errorToFalse()" matStepperPrevious>
+          back
+        </button>
         <button mat-button (click)="saveEmployee()">Save</button>
       </div>
     </mat-step>

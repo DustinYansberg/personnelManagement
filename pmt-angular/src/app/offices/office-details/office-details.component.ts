@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Employee } from '../../models/employee';
-import { EmployeeService } from '../../services/employeeServices/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -71,7 +70,9 @@ export class OfficeDetailsComponent {
   }
 
   deleteOffice() {
-    console.log(this.office.id);
+    this.service.delete(this.office.id).subscribe((res) => {
+      this.router.navigate(['/offices']);
+    });
   }
 
   goToEmployeeDetailsPage(employee: Employee) {

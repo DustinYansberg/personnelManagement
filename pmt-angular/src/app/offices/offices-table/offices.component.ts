@@ -30,6 +30,7 @@ export class OfficesComponent {
   displayedColumns: string[] = ['id', 'name', 'numOfEmployees', 'capacity'];
 
   constructor(private service: OfficeService, private router: Router) {
+    // populate the table with the offices
     this.getAllOffices();
   }
 
@@ -44,7 +45,6 @@ export class OfficesComponent {
     });
   }
 
-  // form variables, linked to html with [(ngmodel)]
   newName: string = '';
   newCapacity: number = 10;
   newEmployees: any = [];

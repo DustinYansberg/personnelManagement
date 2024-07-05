@@ -36,8 +36,8 @@ export class EmployeeDetailsComponent {
   employee: Employee;
   office: Office = new Office(0, 'default', 0, []);
   offices: Office[] = [];
-  isDisabled: boolean = true;
-  showError: boolean = false;
+  isDisabled: boolean = true; // dictates whether the form is disabled
+  showError: boolean = false; // dictates whether to show the capacity error
 
   constructor(
     private service: EmployeeService,
@@ -91,7 +91,6 @@ export class EmployeeDetailsComponent {
   }
 
   saveChanges() {
-    console.log(this.employee.office);
     if (
       (this.employee.office as Office).capacity <=
       (this.employee.office as Office).employees.length

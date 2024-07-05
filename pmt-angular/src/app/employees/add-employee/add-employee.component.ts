@@ -41,17 +41,16 @@ import { Router } from '@angular/router';
 })
 export class AddEmployeeComponent {
   employee: Employee = new Employee(0, '', '', new Office(0, '', 0, []));
-  // office: Office = this.employee.office;
-
   offices: Office[] = [];
+  showError: boolean = false; // dictates whether to show the capacity error
 
+  // form stepper stuff
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  isLinear = false;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -73,6 +72,14 @@ export class AddEmployeeComponent {
     });
   }
 
+  showCapacityError() {
+    this.showError = !this.showError;
+  }
+
+  errorToFalse() {
+    this.showError = false;
+  }
+
   getOfficeName(): string {
     let o: any = this.employee.office;
     return o.name;
@@ -80,8 +87,15 @@ export class AddEmployeeComponent {
 
   saveEmployee() {
     console.log(this.employee);
-    this.employeeService.addEmployee(this.employee).subscribe((res) => {
-      this.router.navigate(['/employees']);
-    });
+    if (
+      (this.employee.office as Office).capacity <=
+      (this.employee.office as Office).employees.length
+    ) {
+      this.showCapacityError();
+    } else {
+      this.employeeService.addEmployee(this.employee).subscribe((res) => {
+        this.router.navigate(['/employees']);
+      });
+    }
   }
 }
